@@ -136,7 +136,7 @@ class Scanner {
         if (type == null)
             type = IDENTIFIER;
 
-        addToken(IDENTIFIER);
+        addToken(type);
     }
 
     private boolean isDigit(char c) {
