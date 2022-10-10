@@ -12,11 +12,17 @@ public class GenerateAst {
             System.exit(64);
         }
         String outputDir = args[0];
-        List<String> types = Arrays.asList(
+        List<String> expressionTypes = Arrays.asList(
                 "Binary   : Expr left, Token operator, Expr right",
                 "Grouping : Expr expression", "Literal  : Object value",
-                "Unary    : Token operator, Expr right");
-        defineAst(outputDir, "Expr", types);
+                "Unary    : Token operator, Expr right",
+                "Variable : Token name");
+        List<String> statementTypes = Arrays.asList(
+                "Expression : Expr expression",
+                "Print      : Expr expression",
+                "Var        : Token name, Expr initializer");
+        defineAst(outputDir, "Expr", expressionTypes);
+        defineAst(outputDir, "Stmt", statementTypes);
     }
 
     private static void defineAst(String outputDir, String baseName, List<String> types) throws IOException {
