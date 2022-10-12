@@ -13,14 +13,20 @@ public class GenerateAst {
         }
         String outputDir = args[0];
         List<String> expressionTypes = Arrays.asList(
+                "Assign   : Token name, Expr value",
                 "Binary   : Expr left, Token operator, Expr right",
-                "Grouping : Expr expression", "Literal  : Object value",
+                "Grouping : Expr expression",
+                "Literal  : Object value",
+                "Logical  : Expr left, Token operator, Expr right",
                 "Unary    : Token operator, Expr right",
                 "Variable : Token name");
         List<String> statementTypes = Arrays.asList(
+                "Block      : List<Stmt> statements",
                 "Expression : Expr expression",
+                "If         : Expr condition, Stmt thenBranch, Stmt elseBranch",
                 "Print      : Expr expression",
-                "Var        : Token name, Expr initializer");
+                "Var        : Token name, Expr initializer",
+                "While      : Expr condition, Stmt body");
         defineAst(outputDir, "Expr", expressionTypes);
         defineAst(outputDir, "Stmt", statementTypes);
     }
